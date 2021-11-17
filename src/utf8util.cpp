@@ -358,15 +358,15 @@ namespace utf8
 	/*
 	 * Convert utf-8 to codepoints
 	 */
-	std::vector<char32_t> utf8_to_codepoints(const std::string& s)
+	std::u32string utf8_to_utf32(const std::string& s)
 	{
-		std::vector<char32_t> result;
+		std::basic_ostringstream<char32_t> result;
 		size_t byte_pos = 0;
 		while (byte_pos < s.size())
 		{
 			if (_is_valid_codepoint_at(s, byte_pos))
 			{
-				result.push_back(_get_codepoint_at(s, byte_pos));
+				result << _get_codepoint_at(s, byte_pos);
 				byte_pos += _get_codepoint_byte_count(s, byte_pos);
 			}
 			else
@@ -376,17 +376,17 @@ namespace utf8
 			}
 		}
 
-		return result;
+		return result.str();
 	}
 
 	/*
 	 * Convert a codepoints to utf-8
 	 */
-	std::string codepoints_to_utf8(std::vector<char32_t> codepoints)
+	std::string utf32_to_utf8(const std::u32string& str)
 	{
 		std::ostringstream oss;
 
-		for (uint32_t codepoint : codepoints)
+		for (uint32_t codepoint : str)
 		{
 			if (codepoint <= 0x7F)
 			{

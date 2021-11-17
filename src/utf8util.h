@@ -8,7 +8,7 @@
 
 #include <cstdint>
 #include <string>
-#include <vector>
+
 
 namespace utf8
 {
@@ -33,12 +33,12 @@ namespace utf8
 	/*
 	 * Convert utf-8 to codepoints
 	 */
-	std::vector<char32_t> utf8_to_codepoints(const std::string& s);
+	std::u32string utf8_to_utf32(const std::string& s);
 
 	/*
 	 * Convert a codepoints to utf-8
 	 */
-	std::string codepoints_to_utf8(std::vector<char32_t> codepoints);
+	std::string utf32_to_utf8(const std::u32string& s);
 
 	/*
 	 * @brief Get a substring based on graphemes

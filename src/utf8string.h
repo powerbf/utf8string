@@ -10,7 +10,6 @@
 
 #include <string>
 #include <cstdint>
-#include <vector>
 #include <iosfwd>
 
 class utf8string : public std::string
@@ -54,7 +53,7 @@ public:
     /**
      * @brief	Get codepoints
      */
-    std::vector<char32_t> codepoints() const;
+    std::u32string to_utf32() const;
 
     /**
      * @brief Return a UTF-8 substring based on characters (graphemes/control characters)

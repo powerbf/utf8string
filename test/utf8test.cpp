@@ -73,8 +73,8 @@ int main()
 
 	// decode & encode
 	std::string f = b + c + d;
-	vector<char32_t> codepoints = utf8::utf8_to_codepoints(f);
-	std::string g = utf8::codepoints_to_utf8(codepoints);
+	std::u32string codepoints = utf8::utf8_to_utf32(f);
+	std::string g = utf8::utf32_to_utf8(codepoints);
 	show_result("Re-encode", f, g);
 
 	// substring

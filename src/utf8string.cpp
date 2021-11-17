@@ -39,9 +39,9 @@ bool utf8string::is_valid_utf8() const
 	return utf8::is_valid_utf8(*this);
 }
 
-std::vector<char32_t> utf8string::codepoints() const
+std::u32string utf8string::to_utf32() const
 {
-	return utf8::utf8_to_codepoints(*this);
+	return utf8::utf8_to_utf32(*this);
 }
 
 utf8string utf8string::substring(size_t pos, size_t count) const
