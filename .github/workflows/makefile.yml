@@ -19,3 +19,9 @@ jobs:
 
     - name: Run tests
       run: make run
+
+    - name: Archive artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: objects
+          path: wcwidth.o utf8util.o utf8string.o
