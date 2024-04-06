@@ -4,6 +4,8 @@ OBJS = wcwidth.o utf8util.o utf8string.o utf8test.o
 
 ifeq ($(BUILD_MODE),debug)
 	CFLAGS += -Wall -g -O0
+else ifeq ($(BUILD_MODE),build)
+	CFLAGS += -Wall -O2
 else ifeq ($(BUILD_MODE),run)
 	CFLAGS += -Wall -O2
 else ifeq ($(BUILD_MODE),linuxtools)
@@ -20,6 +22,8 @@ all:	utf8test run
 
 run:
 	./utf8test
+
+build:	utf8test
 
 utf8test:	$(OBJS)
 	$(CXX) $(LDFLAGS) -o $@ $^
