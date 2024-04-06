@@ -4,17 +4,13 @@ OBJS = wcwidth.o utf8util.o utf8string.o utf8test.o
 
 ifeq ($(BUILD_MODE),debug)
 	CFLAGS += -Wall -g -O0
-else ifeq ($(BUILD_MODE),build)
-	CFLAGS += -Wall -O2
-else ifeq ($(BUILD_MODE),run)
-	CFLAGS += -Wall -O2
 else ifeq ($(BUILD_MODE),linuxtools)
 	CFLAGS += -g -pg -fprofile-arcs -ftest-coverage
 	LDFLAGS += -pg -fprofile-arcs -ftest-coverage
 	EXTRA_CLEAN += utf8string.gcda utf8string.gcno $(PROJECT_ROOT)gmon.out
 	EXTRA_CMDS = rm -rf utf8string.gcda
 else
-    $(error Build mode $(BUILD_MODE) not supported by this Makefile)
+	CFLAGS += -Wall -O2
 endif
 CFLAGS += -I$(PROJECT_ROOT)src
 
